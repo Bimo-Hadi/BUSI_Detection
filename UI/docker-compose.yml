@@ -1,0 +1,8 @@
+services:
+  beeonic:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      BEEONIC_API_KEY: "${BEEONIC_API_KEY:-}"   # isi lewat file .env
+    restart: unless-stopped
