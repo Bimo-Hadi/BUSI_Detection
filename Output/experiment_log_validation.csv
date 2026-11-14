@@ -1,0 +1,6 @@
+Experiment,Accuracy,Malignant recall,Macro F1,Malignant precision
+"A. Model 1, stage 1: frozen backbone (argmax)",0.752,0.719,0.728,0.697
+"B. Model 1, stage 2: + fine-tuning (argmax)",0.838,0.812,0.828,0.765
+C. Ensemble of 3 models (argmax),0.803,0.75,0.786,0.727
+D. + flip TTA (argmax),0.829,0.75,0.812,0.75
+"E. + malignant threshold 0.52 (tuned on val, so optimistic)",0.855,0.75,0.839,0.828

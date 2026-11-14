@@ -1,0 +1,5 @@
+,Day 2 baseline,Final model,Change,SOP mandatory,SOP preferred,Status (mandatory / preferred)
+Accuracy,0.598,0.829,0.231,>= 0.62,>= 0.7,PASS / preferred PASS
+Malignant recall,0.548,0.774,0.226,>= 0.6,>= 0.7,PASS / preferred PASS
+Macro F1,0.546,0.818,0.272,>= 0.58,>= 0.65,PASS / preferred PASS
+Malignant precision,0.607,0.75,0.143,report,>= 0.7,report / preferred PASS

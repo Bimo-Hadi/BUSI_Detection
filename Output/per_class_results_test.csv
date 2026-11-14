@@ -1,0 +1,4 @@
+,Precision,Recall,F1,Support
+benign,0.875,0.848,0.862,66
+malignant,0.75,0.774,0.762,31
+normal,0.81,0.85,0.829,20

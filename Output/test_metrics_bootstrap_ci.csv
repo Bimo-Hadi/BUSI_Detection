@@ -1,0 +1,5 @@
+,Point estimate,95% CI low,95% CI high
+Accuracy,0.829,0.752,0.897
+Malignant recall,0.774,0.611,0.912
+Macro F1,0.818,0.734,0.889
+Malignant precision,0.75,0.594,0.895
