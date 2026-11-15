@@ -42,7 +42,7 @@ python add_ui.py
 pip install -r requirements.txt
 uvicorn app:app --port 8000
 ```
-Web interface: `http://localhost:8000/`. API docs: `/docs`. Link here : [https://drive.google.com/drive/folders/1yTAqfBnS85OkBPL-TTHRxQULb-sgMuqm?usp=sharing]
+Web interface: 'http://127.0.0.1:8000`. API docs: `/docs`. Link here : [https://drive.google.com/drive/folders/1yTAqfBnS85OkBPL-TTHRxQULb-sgMuqm?usp=sharing]
 
 | Method | Path | Purpose |
 |---|---|---|
