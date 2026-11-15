@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beeonic USG Payudara · Triase Worklist</title>
+<style>
+:root{--bg:#f5f7f8;--card:#fff;--tx:#14232b;--mu:#5d6f78;--bd:#dde4e8;--ac:#0e7c86;
+--u:#c62828;--ub:#fdeaea;--r:#b26a00;--rb:#fff3df;--s:#2e7d32;--sb:#e8f5e9}
+@media (prefers-color-scheme:dark){:root{--bg:#0f171b;--card:#172228;--tx:#e8eff2;--mu:#93a6af;--bd:#2a3a42;--ac:#3cb7c2;
+--u:#ff8a80;--ub:#3a1c1c;--r:#ffc266;--rb:#3a2c12;--s:#8fd694;--sb:#1b3320}}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--tx)}
+header{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--card);border-bottom:1px solid var(--bd)}
+h1{font-size:18px;margin:0}h1 span{color:var(--ac)}
+.hdr{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.hs{font-size:12px;padding:3px 9px;border-radius:99px;border:1px solid var(--bd);color:var(--mu)}
+.hs.ok{color:var(--s)}.hs.wait{color:var(--r)}.hs.bad{color:var(--u)}
+.key{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--mu)}
+input[type=password]{padding:6px 10px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:var(--tx)}
+.warn{margin:14px 20px 0;padding:10px 14px;border-radius:10px;background:var(--rb);color:var(--r);font-size:13px}
+main{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:16px;padding:16px 20px 32px}
+@media(max-width:900px){main{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px}
+#drop{border:2px dashed var(--bd);border-radius:14px;padding:26px;text-align:center;color:var(--mu);cursor:pointer;transition:.15s}
+#drop.on,#drop:hover,#drop:focus-visible{border-color:var(--ac);color:var(--ac);background:color-mix(in srgb,var(--ac) 7%,transparent);outline:none}
+#drop b{display:block;font-size:16px;color:var(--tx)}
+#bar{height:6px;border-radius:3px;background:var(--bd);margin-top:12px;overflow:hidden;display:none}
+#bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .2s}
+#msg{min-height:20px;font-size:13px;color:var(--mu);margin-top:8px}
+.tools{display:flex;justify-content:space-between;align-items:center;margin:14px 0 6px}
+button{padding:7px 12px;border:1px solid var(--bd);border-radius:8px;background:var(--card);color:var(--tx);cursor:pointer;font:inherit;font-size:13px}
+button:hover{border-color:var(--ac)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{font-size:12px;text-align:left;color:var(--mu);font-weight:600;padding:6px 8px}
+td{padding:8px;border-top:1px solid var(--bd);vertical-align:middle}
+tr.row{cursor:pointer}tr.row:hover td,tr.sel td{background:color-mix(in srgb,var(--ac) 8%,transparent)}
+tr.row:focus-visible{outline:2px solid var(--ac);outline-offset:-2px}
+td img{width:44px;height:44px;object-fit:cover;border-radius:6px;display:block}
+.fn{max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.badge{display:inline-block;padding:2px 9px;border-radius:99px;font-size:12px;font-weight:700}
+.URGENT{background:var(--ub);color:var(--u)}.ROUTINE{background:var(--rb);color:var(--r)}.STANDARD{background:var(--sb);color:var(--s)}
+.err{color:var(--u)}
+#det h2{margin:0 0 10px;font-size:16px;word-break:break-all}
+.imgs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.imgs figure{margin:0}.imgs img{width:100%;border-radius:10px;background:#000;image-rendering:auto}
+figcaption{font-size:12px;color:var(--mu);margin-top:3px}
+.pb{margin:10px 0 4px;font-size:13px}
+.pb div{display:flex;align-items:center;gap:8px;margin:4px 0}
+.pb em{font-style:normal;width:74px}
+.pb span{flex:1;height:10px;border-radius:5px;background:var(--bd);overflow:hidden}
+.pb span i{display:block;height:100%;background:var(--ac)}
+.pb b{min-width:52px;text-align:right}
+.pb .m i{background:var(--u)}
+.meta{font-size:13px;color:var(--mu);margin-top:10px}
+.flag{margin-top:10px;padding:8px 12px;border-radius:8px;background:var(--rb);color:var(--r);font-size:13px}
+.empty{color:var(--mu);text-align:center;padding:40px 0}
+</style>
+</head>
+<body>
+<header>
+  <h1><span>Beeonic</span> · Triase USG Payudara</h1>
+  <div class="hdr">
+    <span id="hs" class="hs">memeriksa server...</span>
+    <label class="key">API key
+      <input id="key" type="password" placeholder="kosongkan jika tidak dipakai" autocomplete="off">
+    </label>
+  </div>
+</header>
+<div class="warn">Alat bantu prioritas worklist, <b>bukan diagnosis</b>. Radiolog tetap membaca setiap citra. Belum berizin edar Kemenkes: hanya untuk evaluasi mode bayangan (shadow mode).</div>
+<main>
+  <section>
+    <div id="drop" tabindex="0" role="button" aria-label="Pilih citra USG"><b>Tarik &amp; lepas citra USG di sini</b>atau klik untuk memilih (PNG/JPG, bisa banyak sekaligus)</div>
+    <input id="file" type="file" accept="image/png,image/jpeg" multiple hidden>
+    <div id="bar"><i></i></div>
+    <div id="msg" role="status" aria-live="polite"></div>
+    <div class="card" style="margin-top:10px">
+      <div class="tools"><strong>Worklist (ganas lebih dulu)</strong><span><button id="csv">Unduh CSV</button> <button id="clr">Bersihkan</button></span></div>
+      <table><thead><tr><th></th><th>Berkas</th><th>Prediksi</th><th>P(ganas)</th><th>Prioritas</th></tr></thead><tbody id="rows"></tbody></table>
+      <div id="empty" class="empty">Belum ada citra.</div>
+    </div>
+  </section>
+  <section class="card" id="det"><div class="empty">Pilih satu baris untuk melihat detail.</div></section>
+</main>
+<script>
+const $ = s => document.querySelector(s);
+const RANK = {malignant: 0, benign: 1, normal: 2};
+const ID = {malignant: 'Ganas', benign: 'Jinak', normal: 'Normal'};
+const PRI_LABEL = {URGENT: 'URGENT', ROUTINE: 'ROUTINE', STANDARD: 'STANDARD'};   // ubah teks badge di sini
+const MAX_BYTES = 10 * 1024 * 1024, MAX_FILES = 50;
+const EMPTY_DETAIL = 'Pilih satu baris untuk melihat detail.';
+
+let items = [], sel = null;
+let gen = 0;                       // naik setiap "Bersihkan": menghentikan proses lama
+let pending = 0;                   // jumlah batch yang menunggu / berjalan
+let queue = Promise.resolve();     // batch diproses berurutan, tidak saling tabrakan
+const seen = new Set();            // cegah berkas yang sama diunggah dua kali
+
+const key = $('#key');
+try { key.value = sessionStorage.getItem('bk') || ''; } catch (e) {}
+key.onchange = () => { try { sessionStorage.setItem('bk', key.value.trim()); } catch (e) {} };
+const authHeaders = () => { const k = key.value.trim(); return k ? {'X-API-Key': k} : {}; };
+
+const say = (t, err) => { const m = $('#msg'); m.textContent = t || ''; m.className = err ? 'err' : ''; };
+const hari = s => String(s).replace(/\bdays?\b/g, 'hari');
+const fmtP = v => v >= 0.995 ? '>99%' : v < 0.005 ? '<0.5%' : (v * 100).toFixed(1) + '%';   // hindari kesan "100%" yang terlalu yakin
+
+async function health() {
+  const h = $('#hs');
+  try {
+    const j = await (await fetch('/health', {cache: 'no-store'})).json();
+    const ok = j.status === 'ok';
+    h.textContent = ok ? 'server siap (' + j.n_models + ' model)' : 'server memuat model...';
+    h.className = 'hs ' + (ok ? 'ok' : 'wait');
+    if (!ok) setTimeout(health, 3000);
+  } catch (e) {
+    h.textContent = 'server tidak terhubung'; h.className = 'hs bad';
+    setTimeout(health, 10000);
+  }
+}
+
+async function errText(r) {
+  if (r.status === 401) return 'API key salah atau belum diisi';
+  if (r.status === 413) return 'Citra terlalu besar (maks 10 MB)';
+  if (r.status === 400) return 'Berkas bukan citra yang valid (gunakan PNG/JPG)';
+  let d; try { d = (await r.json()).detail; } catch (e) {}
+  if (Array.isArray(d)) d = d.map(x => x.msg || JSON.stringify(x)).join('; ');   // galat validasi FastAPI berupa array
+  return d || ('Kesalahan server (HTTP ' + r.status + ')');
+}
+
+async function analyse(f) {
+  const fd = new FormData(); fd.append('file', f);
+  let r;
+  try { r = await fetch('/v1/predict?include_overlay=true', {method: 'POST', body: fd, headers: authHeaders()}); }
+  catch (e) { throw new Error('Server tidak dapat dihubungi'); }
+  if (!r.ok) throw new Error(await errText(r));
+  try { return await r.json(); } catch (e) { throw new Error('Respons server tidak valid'); }
+}
+
+function accept(files) {
+  const cand = [], bad = [];
+  for (const f of files) {
+    const isImg = /^image\/(png|jpeg)$/.test(f.type) || /\.(png|jpe?g)$/i.test(f.name);
+    const id = f.name + '|' + f.size + '|' + f.lastModified;
+    if (!isImg) bad.push(f.name + ' (bukan PNG/JPG)');
+    else if (f.size > MAX_BYTES) bad.push(f.name + ' (>10 MB)');
+    else if (seen.has(id)) bad.push(f.name + ' (sudah ada)');
+    else cand.push([id, f]);
+  }
+  const use = cand.slice(0, MAX_FILES);
+  use.forEach(([id]) => seen.add(id));
+  return {ok: use.map(x => x[1]), bad, cut: cand.length - use.length};
+}
+
+function enqueue(files) {
+  const {ok, bad, cut} = accept([...files]);
+  const note = (bad.length ? 'Dilewati: ' + bad.join(', ') + '. ' : '') + (cut ? cut + ' berkas melebihi batas ' + MAX_FILES + '.' : '');
+  if (!ok.length) { if (note) say(note, true); return queue; }
+  const g = gen;
+  pending++;
+  queue = queue.then(() => run(ok, g, note)).catch(() => {}).then(() => { pending--; });
+  return queue;
+}
+
+async function run(files, g, note) {
+  if (g !== gen) return;
+  const bar = $('#bar'), fill = bar.firstElementChild;
+  bar.style.display = 'block'; fill.style.width = '0';
+  for (let i = 0; i < files.length; i++) {
+    if (g !== gen) return;
+    say('Menganalisis ' + (i + 1) + ' dari ' + files.length + '...');
+    const f = files[i], it = {name: f.name, thumb: URL.createObjectURL(f)};
+    try { Object.assign(it, await analyse(f)); } catch (e) { it.error = e.message || String(e); }
+    if (g !== gen) { URL.revokeObjectURL(it.thumb); return; }   // dibersihkan saat sedang berjalan
+    items.push(it); render(); fill.style.width = ((i + 1) / files.length * 100) + '%';
+  }
+  say('Selesai. ' + (note || ''), !!note);
+  setTimeout(() => { if (pending === 0) bar.style.display = 'none'; }, 600);
+}
+
+function pick(it, focus) { sel = it; render(focus); detail(it); }
+
+function render(focusSel) {
+  items.sort((a, b) => (a.error ? -1 : 0) - (b.error ? -1 : 0)     // kegagalan di atas supaya tidak terlewat
+    || (RANK[a.predicted_class] ?? 9) - (RANK[b.predicted_class] ?? 9)
+    || (b.malignant_probability || 0) - (a.malignant_probability || 0));
+  const tb = $('#rows'); tb.replaceChildren();
+  $('#empty').style.display = items.length ? 'none' : 'block';
+  let selRow = null;
+  for (const it of items) {
+    const tr = document.createElement('tr');
+    tr.className = 'row' + (it === sel ? ' sel' : '');
+    tr.tabIndex = 0; tr.setAttribute('role', 'button'); tr.setAttribute('aria-selected', it === sel ? 'true' : 'false');
+    if (it === sel) selRow = tr;
+    const c = () => tr.appendChild(document.createElement('td'));
+    const im = document.createElement('img'); im.src = it.thumb; im.alt = ''; c().appendChild(im);
+    const fn = c(); fn.className = 'fn'; fn.textContent = it.name; fn.title = it.name;
+    if (it.error) { const e = c(); e.colSpan = 3; e.className = 'err'; e.textContent = 'Gagal: ' + it.error; }
+    else {
+      const p = c(); p.textContent = ID[it.predicted_class] + (it.needs_extra_attention ? ' ⚠' : '');
+      if (it.needs_extra_attention) p.title = 'Keyakinan model rendah';
+      c().textContent = fmtP(it.malignant_probability);
+      const b = document.createElement('span'); b.className = 'badge ' + it.triage.priority;
+      b.textContent = PRI_LABEL[it.triage.priority] || it.triage.priority; c().appendChild(b);
+    }
+    tr.onclick = () => pick(it, false);
+    tr.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(it, true); } };
+    tb.appendChild(tr);
+  }
+  if (focusSel && selRow) selRow.focus();
+}
+
+function detail(it) {
+  const d = $('#det'); d.replaceChildren();
+  if (it.error) { d.textContent = it.error; return; }
+  const h = document.createElement('h2'); h.textContent = it.name; d.appendChild(h);
+  const g = document.createElement('div'); g.className = 'imgs';
+  const figs = [[it.thumb, 'Citra asli']];
+  if (it.lesion_overlay_png_base64) figs.push(['data:image/png;base64,' + it.lesion_overlay_png_base64, 'Perkiraan area lesi (merah)']);
+  for (const [src, cap] of figs) {
+    const f = document.createElement('figure'), i = document.createElement('img'), c = document.createElement('figcaption');
+    i.src = src; i.alt = cap; c.textContent = cap; f.append(i, c); g.appendChild(f);
+  }
+  d.appendChild(g);
+  const pb = document.createElement('div'); pb.className = 'pb';
+  for (const k of ['malignant', 'benign', 'normal']) {
+    const v = it.probabilities[k], r = document.createElement('div'); if (k === 'malignant') r.className = 'm';
+    const em = document.createElement('em'), bar = document.createElement('span'), fill = document.createElement('i'), val = document.createElement('b');
+    em.textContent = ID[k]; fill.style.width = (v * 100) + '%'; bar.appendChild(fill); val.textContent = fmtP(v);
+    r.append(em, bar, val); pb.appendChild(r);
+  }
+  d.appendChild(pb);
+  const m = document.createElement('div'); m.className = 'meta';
+  m.textContent = 'Prioritas ' + it.triage.priority + ': disarankan dibaca dalam ' + hari(it.triage.suggested_read_within) +
+    ' (target pilot, bukan kebijakan RS). Ambang ganas ' + it.decision_threshold_malignant +
+    '. Luas lesi ≈' + it.lesion_area_pct + '% citra. Model v' + it.model_version + '.';
+  d.appendChild(m);
+  if (it.needs_extra_attention) {
+    const w = document.createElement('div'); w.className = 'flag';
+    w.textContent = '⚠ Keyakinan model rendah: perlu perhatian ekstra radiolog.'; d.appendChild(w);
+  }
+}
+
+function clearAll() {
+  gen++; items.forEach(i => URL.revokeObjectURL(i.thumb));
+  items = []; sel = null; seen.clear(); say('');
+  $('#bar').style.display = 'none';
+  render(); $('#det').replaceChildren(); const e = document.createElement('div'); e.className = 'empty'; e.textContent = EMPTY_DETAIL; $('#det').appendChild(e);
+}
+$('#clr').onclick = clearAll;
+
+$('#csv').onclick = () => {
+  if (!items.length) { say('Belum ada data untuk diunduh.', true); return; }
+  // Nama berkas berasal dari pengguna: awalan = + - @ diberi tanda ' supaya tidak dieksekusi sebagai rumus di Excel
+  const q = v => { let s = String(v ?? ''); if (/^[=+\-@\t\r]/.test(s)) s = "'" + s; return '"' + s.replace(/"/g, '""') + '"'; };
+  const head = ['urutan', 'berkas', 'prediksi', 'p_ganas', 'p_jinak', 'p_normal', 'prioritas', 'saran_baca', 'perlu_perhatian', 'ambang_ganas', 'versi_model'];
+  const rows = [head].concat(items.map((i, n) => i.error
+    ? [n + 1, i.name, 'gagal: ' + i.error, '', '', '', '', '', '', '', '']
+    : [n + 1, i.name, i.predicted_class, i.probabilities.malignant, i.probabilities.benign, i.probabilities.normal,
+       i.triage.priority, i.triage.suggested_read_within, i.needs_extra_attention, i.decision_threshold_malignant, i.model_version]));
+  const csv = '\ufeff' + rows.map(r => r.map(q).join(',')).join('\r\n');   // BOM agar Excel membaca UTF-8
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([csv], {type: 'text/csv;charset=utf-8'}));
+  a.download = 'worklist_beeonic.csv'; a.click();
+};
+
+const drop = $('#drop'), inp = $('#file');
+drop.onclick = () => inp.click();
+drop.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); inp.click(); } };
+inp.onchange = () => { enqueue(inp.files); inp.value = ''; };
+['dragenter', 'dragover'].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.add('on'); }));
+['dragleave', 'drop'].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.remove('on'); }));
+drop.addEventListener('drop', e => enqueue(e.dataTransfer.files));
+// Jika berkas terlepas di luar kotak, jangan biarkan browser membukanya dan meninggalkan halaman
+['dragover', 'drop'].forEach(t => window.addEventListener(t, e => e.preventDefault()));
+
+render();
+health();
+</script>
+</body>
+</html>
