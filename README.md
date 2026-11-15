@@ -36,9 +36,11 @@ The test set is small, so the confidence intervals are wide (for example, malign
 
 ### 2. API
 ```bash
+cp -r beeonic_ui/static beeonic_ui/add_ui.py beeonic_ui/Dockerfile beeonic_ui/docker-compose.yml beeonic_api/
+cd beeonic_api
+python add_ui.py
 pip install -r requirements.txt
-export BEEONIC_API_KEY="your-key"
-uvicorn app:app --host 0.0.0.0 --port 8000
+uvicorn app:app --port 8000
 ```
 Web interface: `http://localhost:8000/`. API docs: `/docs`. Link here : [https://drive.google.com/drive/folders/1yTAqfBnS85OkBPL-TTHRxQULb-sgMuqm?usp=sharing]
 
